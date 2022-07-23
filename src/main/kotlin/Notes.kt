@@ -96,16 +96,6 @@ object NotesService {
     }
 
     fun delete(noteId: Int): Boolean {
-//        for ((index, el) in notes.withIndex()) {
-//            if (el.nid == noteId) {
-//                notes.drop(index)
-//                val list = getComments(noteId, el.ownerId, null)
-//                for (el in list) {
-//                    deleteComment(el.cid, el.ownerId)
-//                }
-//                return true
-//            }
-//        }
         val note = notes.find { it.nid == noteId } ?: return false
         val list = getComments(noteId, note.ownerId, null)
         for (el in list) {
@@ -133,12 +123,6 @@ object NotesService {
         }
         return false
     }
-
-    fun print() {
-        println(notes)
-        println(comments)
-    }
-
 }
 
 class NoteNotFoundException(message: String) : RuntimeException(message)
